@@ -1,0 +1,16 @@
+body{
+  font-family: Arial;
+  background: pink;
+  color: white;
+}
+.welcome{
+  color: #000;
+  font-size: 27px;
+}
+.top span{
+  color: blue;
+}
+.info{
+  border: 2px solid red;
+  padding: 20px;
+}
