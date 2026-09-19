@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{
+  height: 105vh;
+  margin: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg,#f6d365,#fda085);
+  font-family: 'Poppins',sans-serif;
+}
+.book{
+  width: 200px;
+  height: 270px;
+  perspective: 2000px;
+  position: relative;
+  
+}
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:  0;
+  left: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.front,.back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.front{
+  background:#fff;
+}
+.back {
+  background: #f0f0f0;
+  transform: rotateY(180deg);
+  
+}
+.page.flipped{
+  transform: rotateY(-180deg);
+  z-index: 0;
+}
+.page:nth-child(1){z-index: 4;}
+.page:nth-child(2){z-index: 3;}
+.page:nth-child(3){z-index: 2;}
+.page:nth-child(4){z-index: 1;}
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #555;
+  
+}
+  </style>
+  
+</head>
+
+<body>
+  <div class="book" id="book">
+  <div class="page">
+   <div class="front"><h2>page1</h2>
+   <p>បងស្រលាញ់អូននិងកូន</p>
+      </div> 
+      <div class="back"></div>
+  </div>  
+  <div class="page">
+   <div class="front"><h2>page2</h2>
+   <p>this my heard❤️</p>
+   </div> 
+   <div class="back"></div>
+  </div>
+  <div class="page">
+    <div class="front"><h2>page3</h2>
+    <p>សេចក្ដីស្រលាញ់នេះផ្ញើរជូនធី</p>
+    </div>
+    <div class="back"></div>
+  </div>
+  <div class="page">
+    <div class="front"><h2>page4</h2>
+    <p>i love k'thy and your baby forever</p>
+    </div>
+    <div class="back"></div>
+  </div>
+  
+  </div>
+  <button onclick="flipPage()">បើកមើល
+  </button>
+<script>
+ let currentPage = 0;
+
+const pages = document.querySelectorAll('.page');
+
+function flipPage() {
+  
+  if (currentPage < pages.length) {
+    
+    pages[currentPage].classList.add('flipped');
+    
+    currentPage++;
+    
+  } else {
+    
+    pages.forEach(p => {
+      p.classList.remove('flipped');
+    });
+    
+    currentPage = 0;
+  }
+}
+</script>
+</body>
+
+</html>
